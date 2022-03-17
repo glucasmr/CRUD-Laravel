@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function relBooks()
+    {
+        return $this->hasMany(related:'App\Models\ModelBook',foreignKey:'id_user');
+    }
+
+
 }
