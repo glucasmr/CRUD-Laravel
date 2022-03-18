@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function relBooks()
     {
-        return $this->hasMany(related:'App\Models\ModelBook',foreignKey:'id_user');
+        return $this->hasMany('App\Models\ModelBook','id_user');
     }
 
 

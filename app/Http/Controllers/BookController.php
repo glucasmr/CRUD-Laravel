@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\BookRequest;
 use App\Models\ModelBook;
 use App\Models\User;
 
@@ -23,8 +23,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $book=$this->objBook->all();
-        return view("index",compact(var_name:'book'));
+        $book = $this->objBook->all();
+        return view("index",compact('book'));
     }
 
     /**
@@ -35,7 +35,7 @@ class BookController extends Controller
     public function create()
     {
         $users=$this->objUser->all();
-        return view("create",compact(var_name:'users'));
+        return view("create",compact('users'));
 
     }
 
@@ -45,7 +45,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         $cad=$this->objBook->create([
             'title'=>$request->title,
@@ -67,7 +67,7 @@ class BookController extends Controller
     public function show($id)
     {
         $book=$this->objBook->find($id);
-        return view("show",compact(var_name:'book'));
+        return view("show",compact('book'));
     }
 
     /**
@@ -88,7 +88,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BookRequest $request, $id)
     {
         //
     }
