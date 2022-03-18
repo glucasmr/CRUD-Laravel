@@ -1,9 +1,9 @@
 @extends('templates.template')
 
 @section('content')
-    <h1 class="text-center">Lista de Mangás</h1>
+    <h1 class="text-center mt-3">Lista de Mangás</h1>
     <div class="text-center mt-4 mb-4">
-        <a href="">
+        <a href="{{url("books/create")}}">
             <button class="btn btn-success">Cadastrar</button>
         </a>
     </div>
