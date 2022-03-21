@@ -12,7 +12,7 @@
         @endif
 
         @if (isset($book))
-            <form name="formEdit" id="formEdit" action="{{url('books/$book->id')}}" method="post">
+            <form name="formEdit" id="formEdit" action="{{url("books/$book->id")}}" method="post">
             @method('PUT')
         @else
             <form name="formCad" id="formCad" action="{{url('books')}}" method="post">
@@ -26,7 +26,7 @@
                         <option value="{{$user->id}}">{{$user->name}}</option>
                       @endforeach
                   </select>
-                  <input class="form-control mb-3" type="text" name="pages" id="pages" placeholder="Núm. Páginas"value="{{$book->pages ?? ''}}"  required>
+                  <input class="form-control mb-3" type="text" name="pages" id="pages" placeholder="Núm. Páginas" value="{{$book->pages ?? ''}}"  required>
                   <input class="form-control mb-3" type="text" name="price" id="price" placeholder="Preço" value="{{$book->price ?? ''}}" required>
                   <button type="submit" class="btn btn-primary">@if(isset($book))Editar @else Cadastrar @endif</button> 
         </form>
