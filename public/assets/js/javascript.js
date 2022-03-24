@@ -3,6 +3,8 @@
 
     function confirmDel(event){
         event.preventDefault();
+            let url = event.target.parentNode.href;
+            console.log(url);    
         let token = doc.getElementsByName("_token")[0].value;
 
         if(confirm("Deseja mesmo apagar?")){
@@ -12,15 +14,8 @@
             ajax.onreadystatechange=function(){
                 if(ajax.readyState === 4 && ajax.status === 200){
                     console.log("DEU CERTO!");
-                    let url = event.target.parentNode.href;
-                    console.log(url);
-                    url = url.split('/');
-                    if(url[3]=='books'){
-                        win.location.href = "books";
-                    }else{
-                        win.location.href = "users";
-                    }
-                    
+                    url = window.location.href;
+                    win.location.href = url;
                 }
             };
             ajax.send();
