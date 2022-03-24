@@ -12,7 +12,15 @@
             ajax.onreadystatechange=function(){
                 if(ajax.readyState === 4 && ajax.status === 200){
                     console.log("DEU CERTO!");
-                    win.location.href="books";
+                    let url = event.target.parentNode.href;
+                    console.log(url);
+                    url = url.split('/');
+                    if(url[3]=='books'){
+                        win.location.href = "books";
+                    }else{
+                        win.location.href = "users";
+                    }
+                    
                 }
             };
             ajax.send();

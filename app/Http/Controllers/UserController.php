@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BookRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\ModelBook;
 use App\Models\User;
 
-class BookController extends Controller
+class UserController extends Controller
 {
+
     private $objUser;
     private $objBook;
     public function __construct()
@@ -21,10 +22,12 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
-        $book = $this->objBook->paginate(7);
-        return view("book",compact('book'));
+        $user = $this->objUser->paginate(7);
+        return view("user",compact('user'));
     }
 
     /**
@@ -34,9 +37,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $users=$this->objUser->all();
-        return view("createBook",compact('users'));
-
+        return view("createUser");
     }
 
     /**
@@ -45,16 +46,14 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookRequest $request)
+    public function store(UserRequest $request)
     {
-        $cad=$this->objBook->create([
-            'title'=>$request->title,
-            'pages'=>$request->pages,
-            'price'=>$request->price,
-            'id_user'=>$request->id_user
-        ]);
+        $cad=$this->objUser->create([
+            'name'=>$request->name,
+            'email'=>$request->email
+            ]);
         if($cad){
-            return redirect('books');
+            return redirect('users');
         }
     }
 
@@ -66,8 +65,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book=$this->objBook->find($id);
-        return view("showBook",compact('book'));
+        $user = $this->objUser->find($id);
+        return view("showUser",compact('user'));
     }
 
     /**
@@ -78,9 +77,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $book = $this->objBook->find($id);
-        $users = $this->objUser->all();
-        return view("createBook",compact('book','users'));
+        $user = $this->objUser->find($id);
+        return view("createUser",compact('user'));
     }
 
     /**
@@ -90,15 +88,13 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookRequest $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $this->objBook->where(['id'=>$id])->update([
-            'title'=>$request->title,
-            'pages'=>$request->pages,
-            'price'=>$request->price,
-            'id_user'=>$request->id_user
-        ]);
-        return redirect('books');
+        $this->objUser->where(['id'=>$id])->update([
+            'name'=>$request->name,
+            'email'=>$request->email
+            ]);
+        return redirect('users');
     }
 
     /**
@@ -109,7 +105,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $del=$this->objBook->destroy($id);
+        $del=$this->objUser->destroy($id);
         return($del)?"sim":"não";
     }
 }

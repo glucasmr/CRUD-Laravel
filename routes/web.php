@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +16,5 @@ use App\Http\Controllers\BookController;
 |
 */
 Route::resource('/books', BookController::class);
+Route::resource('/', Controller::class);
+Route::resource('/users', UserController::class);
