@@ -7,7 +7,7 @@
             <button class="btn btn-success">Cadastrar</button>
         </a>
     </div>
-    <div class="col-8 m-auto">
+    <div class="col-8 m-auto mb-15">
         @csrf
         <table class="table text-center">
             <thead class="table-dark">

@@ -26,7 +26,7 @@ class UserController extends Controller
      
     public function index()
     {
-        $user = $this->objUser->paginate(7);
+        $user = $this->objUser->paginate(5);
         return view("user",compact('user'));
     }
 
