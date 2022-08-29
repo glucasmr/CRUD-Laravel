@@ -2,5 +2,5 @@
 
 ## CRUD in Laravel
 
-For this mimi project, migrations were used for the DB creation, as well as the built in the framework tools for creating a CRUD system. The project has two related CRUD's, and their tables relation is built in the MySql and in the model.
+For this mini project, migrations were used for the DB creation, as well as the built in the framework tools for creating a CRUD system. The project has two related CRUD's, and their tables relation is built in the MySql and in the model.
 
